@@ -8,6 +8,7 @@ on:
 jobs:
   mine:
     runs-on: ubuntu-latest
+    timeout-minutes: 360
 
     steps:
       - name: Install dependencies
